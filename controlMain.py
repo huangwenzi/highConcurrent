@@ -34,7 +34,6 @@ session_opts = {
 def getVal():
     try:
         key = request.query.key
-        print(key)
         val = dbMagr.get_val(key)
         return val
     except Exception as e:
@@ -46,11 +45,9 @@ def getVal():
 def setVal():
     try:
         data = request.json
-        print(data)
         key = data["key"]
         val = data["val"]
         dbMagr.set_val(key, val)
-        print(10)
         # 不可以返回数字，会说object is not iterable
         # return 1
         return "1"

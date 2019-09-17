@@ -14,18 +14,14 @@ class DbMagr():
 
     # 设置值
     def set_val(self, key, val):
-        print(1)
         # 先检查是否key值存在
         mycol = self.mydb["test"]
         old_val = mycol.find_one({"key": key})
-        print(old_val)
         if old_val:
-            print(3)
             query = { "key": key }
             newvalues = { "$set": { "val": val } }
             mycol.update_one(query, newvalues)
         else:
-            print(4)
             mycol.insert_one({"key": key, "val": val})
         return True
 
