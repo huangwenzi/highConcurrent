@@ -9,3 +9,6 @@
     2. 如果是linux下，使用pm2管理，使用配置文件
 - clientMain : 模拟客户端启动入口
     1. 默认启动例子： python clientMain.py
+- lbMain : 负载均衡启动入口
+    1. 默认启动例子： python controlMain.py 11000
+                    python 启动文件 服务器端口 
