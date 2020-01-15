@@ -27,7 +27,7 @@ class ClientMgr(object):
         return response.read().decode('utf-8')
     
     # 发送post请求
-    def send_post(self, key, val):
+    def send_set(self, key, val):
         headers = {'content-type':'application/json'}
         data = {
             'key': key,

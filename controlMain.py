@@ -16,7 +16,7 @@ import os
 # 自写模块
 import control.dbMgr as dbMgrMd
 # import dbMgr as dbMgrMd
-dbMagr = dbMgrMd.dbMagr
+dbMgr = dbMgrMd.dbMgr
 
 # 电脑地址 http://127.0.0.1:10001
 # 域名地址 http://thiswen.cn:10001
@@ -34,7 +34,8 @@ session_opts = {
 def getVal():
     try:
         key = request.query.key
-        val = dbMagr.get_val(key)
+        val = dbMgr.get_val(key) or "None"
+        print("getVal key:%s,val:%s"%(key,val))
         return val
     except Exception as e:
         print('getVal, error:', e.value)
@@ -47,7 +48,8 @@ def setVal():
         data = request.json
         key = data["key"]
         val = data["val"]
-        dbMagr.set_val(key, val)
+        print("setVal key:%s,val:%s"%(key,val))
+        dbMgr.set_val(key, val)
         # 不可以返回数字，会说object is not iterable
         # return 1
         return "1"
@@ -58,10 +60,7 @@ def setVal():
 
 # 函数主入口
 if __name__ == '__main__':
-    # argv = sys.argv
-    # print(argv)
-
-    prot = int(sys.argv[1])
+    prot = int(11000)
     app_argv = SessionMiddleware(default_app(), session_opts)
     run(app=app_argv, host='0.0.0.0', port=prot, debug=True, reloader=True)
 
