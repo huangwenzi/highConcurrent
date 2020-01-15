@@ -53,7 +53,7 @@ class DbMgr():
     # 初始化
     def __init__(self):
         # 将 con 设定为全局连接
-        self.conn = sqlite3.connect('test_1.db')
+        self.conn = sqlite3.connect('test_2.db')
         # 获取连接的 cursor，只有获取了 cursor，我们才能进行各种操作
         self.mydb = self.conn.cursor()
         # 检查表是否存在

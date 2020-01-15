@@ -21,13 +21,13 @@ session_opts = {
 }
 
 # 添加新的服务器
-@get('/addSer')
+@post('/addSer')
 def addSer():
     try:
         data = data = request.json
-        return lbMger.add_ser(data)
+        return lbMger.add_svr(data)
     except Exception as e:
-        print('getVal, error:', e.value)
+        print('addSer, error:', e.value)
         return "-1"
 # 获取值
 @get('/getVal')
@@ -55,7 +55,7 @@ def setVal():
 if __name__ == '__main__':
     # argv = sys.argv
     # print(argv)
+    # port = int(sys.argv[1])
 
-    prot = int(sys.argv[1])
     app_argv = SessionMiddleware(default_app(), session_opts)
-    run(app=app_argv, host='0.0.0.0', port=prot, debug=True, reloader=True)
+    run(app=app_argv, host='0.0.0.0', port=11000, debug=True, reloader=True)
