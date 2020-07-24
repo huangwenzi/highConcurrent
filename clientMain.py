@@ -16,22 +16,17 @@ def auto_send(num, interval):
     while idx < num:
         idx += 1
         ret = clientMgr.send_set("%d"%(idx), "%d"%(idx))
-        print(ret)
         ret = clientMgr.send_get("%d"%(idx))
-        print(ret)
         time.sleep(interval)
     end = time.time()
     print("time consume:%f"%(end - now))
-# 1000 3.625008秒   300
-# 2000 4.328594秒   500
-# 3000 5.440176秒   550
-# 6000 133.2099秒   
+
 while True:
     in_str = input("数量和间隔：")
 
     while True:
         now = time.time()
-        if now < 1579071540:
+        if now < 1579081020:
             time.sleep(0.01)
         else:
             break

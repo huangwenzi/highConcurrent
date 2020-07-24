@@ -35,9 +35,7 @@ class LBMger(object):
                 return "没有工作中的服务器"
             # 发送
             send_str = (get_value_path + "?key=%s")%(svr_info["ip"], svr_info["port"], key)
-            print("send_str:%s"%(send_str))
             ret = request.Request(send_str)
-            print(ret)
             response = request.urlopen(ret)
             # 服务器顺序加一
             self.svr_now_idx_add()
@@ -54,7 +52,6 @@ class LBMger(object):
                 return "没有工作中的服务器"
             # 发送
             send_path = set_value_path%(svr_info["ip"], svr_info["port"])
-            print("send_path:%s"%(send_path))
             headers = {'content-type':'application/json'}
             data = {
                 'key': key,
